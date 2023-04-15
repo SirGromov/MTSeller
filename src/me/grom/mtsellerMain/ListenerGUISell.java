@@ -120,8 +120,7 @@ public class ListenerGUISell implements Listener{
 		Double per_price = MTSellerMain.sellerList.get(mat);
 		if (pLimit < catLimit) {
 			Double stack_price = price * 64;
-			int num1 = CountUtil.CountMaterial(p.getInventory(), mat);
-			Double num_price = CountUtil.round(price * num1, 2);
+			Double num_price = CountUtil.round(price * num, 2);
 			for (int i = 0; i < num; i++) {
 				pLimit = MTSellerMain.playersData.get(p.getName()).get(rcat);
 				if (pLimit < catLimit) {
@@ -129,21 +128,22 @@ public class ListenerGUISell implements Listener{
 					MTSellerMain.playersData.get(p.getName()).put(rcat, pLimit+1);
 				}
 			}
+			int num1 = CountUtil.CountMaterial(p.getInventory(), mat);
 			ItemStack newItem = new ItemStack(mat);
 			ItemMeta newMeta = newItem.getItemMeta();
 			List<String> newLore = Arrays.asList(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.entry_lore"), 
 					cat, 
 					per_price.toString(),
 					stack_price.toString(),
-					Integer.toString(num),
+					Integer.toString(num1),
 					Double.toString(num_price),
 					MTSellerMain.playersData.get(p.getName()).get(rcat).toString(),
 					Integer.toString(catLimit)).split("\n"));
 			newMeta.setLore(newLore);
 			newItem.setItemMeta(newMeta);
-			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(price));
+			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(num_price));
 			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
-			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(price)));
+			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(num_price)));
 			e.getInventory().setItem(e.getSlot(), newItem);
 		}
 		else {
