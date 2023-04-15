@@ -28,6 +28,7 @@ public class ListenerGUISell implements Listener{
 	
 	private static ItemStack filler = ItemUtil.create(Material.getMaterial(MTSellerMain.instance.getConfig().getString("seller_settings.filler_material").toUpperCase()), 1, "   ", null);
 	private static ItemStack closer = ItemUtil.create(Material.getMaterial(MTSellerMain.instance.getConfig().getString("seller_settings.close_material").toUpperCase()), 1, MTSellerMain.instance.getConfig().getString("seller_settings.close_name"), null);
+	private static ItemStack updater;
 	
 	public static void openGui(Player p) {
 		Inventory inv = Bukkit.createInventory(null, MTSellerMain.instance.getConfig().getInt("seller_settings.gui_size"), MTSellerMain.instance.getConfig().getString("seller_settings.title"));
@@ -44,7 +45,7 @@ public class ListenerGUISell implements Listener{
 		String timeRemaing = Integer.toString(rhrs) + ":" + Integer.toString(rmins) + ":" + Integer.toString(rsecs);
 		Date rDate = new Date(MTSellerMain.now.getTime() + (period * 1000));
 		List<String> updateLore = Arrays.asList(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.update_lore"), timeRemaing, format.format(rDate)).split("\n"));
-		ItemStack updater = ItemUtil.create(Material.getMaterial(MTSellerMain.instance.getConfig().getString("seller_settings.update_material").toUpperCase()), 1, MTSellerMain.instance.getConfig().getString("seller_settings.update_name"), updateLore);
+		updater = ItemUtil.create(Material.getMaterial(MTSellerMain.instance.getConfig().getString("seller_settings.update_material").toUpperCase()), 1, MTSellerMain.instance.getConfig().getString("seller_settings.update_name"), updateLore);
 		ArrayList<Material> val = new ArrayList<>(MTSellerMain.sellerList.keySet());
 		int j = 0;
 		int i = 0;
@@ -94,7 +95,7 @@ public class ListenerGUISell implements Listener{
 			if (eventItem.isSimilar(closer)) {
 				p.closeInventory();
 			}
-			else if (!eventItem.isSimilar(filler)){
+			else if (!(eventItem.isSimilar(filler) || eventItem.isSimilar(updater))){
 				if (p.getInventory().contains(eventItem.getType())) {
 					int num = 1;
 					Double price = MTSellerMain.sellerList.get(eventItem.getType());
