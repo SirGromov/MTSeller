@@ -1,0 +1,189 @@
+categories:
+    auto:
+        name: "§cАвтофермы"
+        limit: 256
+        slots: 2
+        entries:
+            sugar_cane:
+                price_start: 0.5
+                price_end: 0.8
+            pumpkin:
+                price_start: 0.3
+                price_end: 1
+            brown_mushroom:
+                price_start: 0.5
+                price_end: 1.2
+            sweet_berries:
+                price_start: 0.8
+                price_end: 1.2
+            kelp:
+                price_start: 0.2
+                price_end: 0.5
+            egg:
+                price_start: 0.6
+                price_end: 1.4
+            melon:
+                price_start: 0.2
+                price_end: 0.8
+            
+    wool:
+        name: "§cШерсть"
+        limit: 128
+        slots: 1
+        entries:
+            white_wool:
+                price_start: 0.5
+                price_end: 3
+            black_wool:
+                price_start: 0.5
+                price_end: 3
+            light_gray_wool:
+                price_start: 0.5
+                price_end: 3
+            cyan_wool:
+                price_start: 0.5
+                price_end: 3.5
+    mob:
+        name: "§cДроп с мобов"
+        limit: 128
+        slots: 2
+        entries:
+            bone:
+                price_start: 0.5
+                price_end: 3
+            spider_eye:
+                price_start: 0.1
+                price_end: 0.5
+            string:
+                price_start: 0.5
+                price_end: 3
+            feather:
+                price_start: 0.2
+                price_end: 1
+            gunpowder:
+                price_start: 0.5
+                price_end: 3
+            porkchop:
+                price_start: 0.2
+                price_end: 1.5
+            leather:
+                price_start: 0.5
+                price_end: 2
+            slime_ball:
+                price_start: 1.5
+                price_end: 4
+    notauto:
+        name: "§cДругое"
+        limit: 256
+        slots: 2
+        entries:
+            glowstone_dust:
+                price_start: 3
+                price_end: 6
+            shroomlight:
+                price_start: 2
+                price_end: 5
+            charcoal:
+                price_start: 0.5
+                price_end: 2
+            nether_wart:
+                price_start: 0.3
+                price_end: 1.3
+            carrot:
+                price_start: 0.3
+                price_end: 1
+            potato:
+                price_start: 0.5
+                price_end: 2
+            wheat:
+                price_start: 0.8
+                price_end: 3
+            cod:
+                price_start: 1
+                price_end: 3
+            salmon:
+                price_start: 1.5
+                price_end: 3
+            cornflower:
+                price_start: 0.8
+                price_end: 3
+            packed_ice:
+                price_start: 0.8
+                price_end: 2
+            pumpkin_pie:
+                price_start: 0.5
+                price_end: 2
+            honeycomb:
+                price_start: 1.5
+                price_end: 5
+    logs:
+        name: "§cБревна"
+        limit: 128
+        slots: 1
+        entries:
+            oak_log:
+                price_start: 0.3
+                price_end: 2.5
+            dark_oak_log:
+                price_start: 0.5
+                price_end: 2.5
+            acacia_log:
+                price_start: 0.6
+                price_end: 1.3
+            jungle_log:
+                price_start: 0.4
+                price_end: 1.1
+            birch_log:
+                price_start: 0.6
+                price_end: 2.3
+            spruce_log:
+                price_start: 0.4
+                price_end: 1.1
+    mine:
+        name: "§cШахта"
+        limit: 192
+        slots: 2
+        entries:
+            iron_ore:
+                price_start: 4
+                price_end: 7
+            coal:
+                price_start: 0.3
+                price_end: 1
+            gold_ore:
+                price_start: 15
+                price_end: 18
+            nether_gold_ore:
+                price_start: 2.5
+                price_end: 6
+            nether_quartz_ore:
+                price_start: 2.5
+                price_end: 5
+            redstone:
+                price_start: 0.3
+                price_end: 0.8
+            quartz:
+                price_start: 0.3
+                price_end: 0.8
+            lapis_lazuli:
+                price_start: 1
+                price_end: 3
+
+seller_settings:
+    update_period: 10800
+    limit_message: "§cВы исчерпали свой лимит на продажу!"
+    title: "§cСкупщик предметов"
+    gui_size: 54
+    gui_schema: "FFFFUFFFFFFFFFFFFFFFEEEEEFFFFEEEEEFFFFFFFFFFFCCCCCCCCC"
+    entry_lore: "§fКатегория: %s\n\n§fПродать х1: §a%s€ §7[ЛКМ]\n§fПродать x64: §a%s€ §7[ПКМ]\n§fПродать все x%s: §a%s€ §7[СКМ]\n\n§fУже продано: §c%s§f/§c%s"
+    update_material: clock
+    update_name: "§6Следующее обновление:"
+    update_lore: "§e>§f%s §7| §f%s\n\n§cБудут обновлены все\n§cтовары и лимиты!"
+    close_material: red_stained_glass_pane
+    close_name: "§cЗакрыть"
+    filler_material: gray_stained_glass_pane
+    lack_items_message: "§4Недостаточно предметов!"
+    sell_items_message: "§6Продано %s x%s за %s€"
+    update_sell_message: "\n§aСкупщик был обновлен!\n"
+    eco_command: "eco give %s %s"
+    

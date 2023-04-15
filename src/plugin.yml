@@ -1,0 +1,23 @@
+main: me.grom.mtsellerMain.MTSellerMain
+name: MTSeller
+version: Alpha 1.0.0
+description: This plugin is enables items seller to be strictly configured.
+api-version: 1.16
+author: SirGromov
+website: www.vk.com/novus_team
+commands:
+    sell:
+        description: Selling stuff.
+        permission: mtseller.sell
+        usage: Syntax error! Simply type /&lt;command&gt; to open seller.
+permissions:
+    mtseller.*:
+        description: Gives access to all MTSeller commands
+        default: op
+        children:
+            mtseller.sell: true
+            mtseller.force: true
+    mtseller.sell:
+        description: Allows you to open seller.
+        default: true
+   
