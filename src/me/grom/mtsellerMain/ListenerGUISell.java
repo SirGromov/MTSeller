@@ -140,7 +140,7 @@ public class ListenerGUISell implements Listener{
 					Integer.toString(catLimit)).split("\n"));
 			newMeta.setLore(newLore);
 			newItem.setItemMeta(newMeta);
-			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(num_price));
+			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(price));
 			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
 			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(num_price)));
 			e.getInventory().setItem(e.getSlot(), newItem);
