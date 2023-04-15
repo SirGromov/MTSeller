@@ -117,6 +117,7 @@ public class ListenerGUISell implements Listener{
 	public void sellNum(Player p, int num, Material mat, Double price, String cat, InventoryClickEvent e, String rcat) {
 		int catLimit = MTSellerMain.instance.getConfig().getInt("categories."+rcat+".limit");
 		int pLimit = MTSellerMain.playersData.get(p.getName()).get(rcat);
+		Double per_price = MTSellerMain.sellerList.get(mat);
 		if (pLimit < catLimit) {
 			Double stack_price = price * 64;
 			int num1 = CountUtil.CountMaterial(p.getInventory(), mat);
@@ -132,7 +133,7 @@ public class ListenerGUISell implements Listener{
 			ItemMeta newMeta = newItem.getItemMeta();
 			List<String> newLore = Arrays.asList(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.entry_lore"), 
 					cat, 
-					price.toString(),
+					per_price.toString(),
 					stack_price.toString(),
 					Integer.toString(num),
 					Double.toString(num_price),
@@ -142,7 +143,7 @@ public class ListenerGUISell implements Listener{
 			newItem.setItemMeta(newMeta);
 			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(price));
 			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
-			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(num_price)));
+			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(price)));
 			e.getInventory().setItem(e.getSlot(), newItem);
 		}
 		else {
