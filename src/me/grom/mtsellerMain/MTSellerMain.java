@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +22,6 @@ import me.grom.sellUtils.RandomUtil;
 
 public class MTSellerMain extends JavaPlugin implements Listener{
 	
-	FileConfiguration config = this.getConfig();
 	static HashMap<Material, Double> sellerList = new HashMap<>();
 	static HashMap<Material, String> sellerCats = new HashMap<>();
 	static HashMap<Material, String> sellerRawCats = new HashMap<>();

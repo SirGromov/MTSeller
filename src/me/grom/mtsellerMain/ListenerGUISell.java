@@ -94,7 +94,7 @@ public class ListenerGUISell implements Listener{
 			if (eventItem.isSimilar(closer)) {
 				p.closeInventory();
 			}
-			else {
+			else if (!eventItem.isSimilar(filler)){
 				if (p.getInventory().contains(eventItem.getType())) {
 					int num = 1;
 					Double price = MTSellerMain.sellerList.get(eventItem.getType());
