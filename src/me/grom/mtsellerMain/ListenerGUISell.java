@@ -120,15 +120,18 @@ public class ListenerGUISell implements Listener{
 		Double per_price = MTSellerMain.sellerList.get(mat);
 		if (pLimit < catLimit) {
 			Double stack_price = price * 64;
-			Double num_price = CountUtil.round(price * num, 2);
+			int selled = 0;
 			for (int i = 0; i < num; i++) {
 				pLimit = MTSellerMain.playersData.get(p.getName()).get(rcat);
 				if (pLimit < catLimit) {
 					p.getInventory().removeItem(new ItemStack(mat, 1));
 					MTSellerMain.playersData.get(p.getName()).put(rcat, pLimit+1);
+					selled++;
 				}
 			}
+			Double selled_price = CountUtil.round(price * selled, 2);
 			int num1 = CountUtil.CountMaterial(p.getInventory(), mat);
+			Double num1_price = CountUtil.round(price * num1, 2);
 			ItemStack newItem = new ItemStack(mat);
 			ItemMeta newMeta = newItem.getItemMeta();
 			List<String> newLore = Arrays.asList(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.entry_lore"), 
@@ -136,14 +139,14 @@ public class ListenerGUISell implements Listener{
 					per_price.toString(),
 					stack_price.toString(),
 					Integer.toString(num1),
-					Double.toString(num_price),
+					Double.toString(num1_price),
 					MTSellerMain.playersData.get(p.getName()).get(rcat).toString(),
 					Integer.toString(catLimit)).split("\n"));
 			newMeta.setLore(newLore);
 			newItem.setItemMeta(newMeta);
-			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(num_price));
+			String cmd = String.format(MTSellerMain.instance.getConfig().getString("seller_settings.eco_command"), p.getName(), Double.toString(selled_price));
 			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd);
-			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(num), Double.toString(num_price)));
+			p.sendMessage(String.format(MTSellerMain.instance.getConfig().getString("seller_settings.sell_items_message"), mat.name(), Integer.toString(selled), Double.toString(selled_price)));
 			e.getInventory().setItem(e.getSlot(), newItem);
 		}
 		else {
